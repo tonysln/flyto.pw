@@ -25,7 +25,7 @@ body {
 }
 
 #app {
-  margin-top: 60px;
+  margin-top: 68px;
 }
 
 #tab_journey {
@@ -34,4 +34,8 @@ body {
 
 #tab_journey .container {
   height: 100%;
+}
+
+.footer {
+  padding: 1.5rem 1.5rem;
 }
