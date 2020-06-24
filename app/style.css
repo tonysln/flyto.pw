@@ -1,0 +1,37 @@
+@import url("https://rsms.me/inter/inter.css");
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  * {
+    font-family: "Inter var", sans-serif;
+  }
+}
+.underlined_pointer {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+html {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+body {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+#app {
+  margin-top: 60px;
+}
+
+#tab_journey {
+  height: 100%;
+}
+
+#tab_journey .container {
+  height: 100%;
+}
