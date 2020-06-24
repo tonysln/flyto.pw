@@ -36,7 +36,7 @@ The main page, consisting of panes with journey steps. Possible types of steps:
 
 Every pane/card will have an emoji, bold text (Inter font), bright colors, short info. Links to other pages (like tickets), options to view QR codes or images etc.
 
-Quick ways to edit or add more panes.
+Quick ways to edit or add more panes. Every pane will ask for its type (aka a template) and extra stuff like tickets (that you'll have to insert from the other tab).
 
 ### Tickets
 Ticket information page, will have larger panes for individual tickets.
@@ -49,9 +49,59 @@ Panes for type of food, where, at what time. Favorite coffee place? Prices, too.
 ### Expenses
 A list of all the expenses with ability to sum, sort, etc.
 
-Items will be just objects from other pages.
+Items will be just objects from other pages (will ask for tickets and food).
 
 ### Settings
 Ability to save/share the JSON object stuff.
 
 Change the view - dark/light modes etc.
+
+## Technology
+Frontend - Vue.js possibly? First version - pure JS and bulma. Fonts - Inter.
+
+Localstorage for saving. JS/Vue for pretty much everything.
+
+All data stored in a JSON object, maybe something like this:
+```js
+const journey = {
+  created: "datestamp here",
+  from: "Tallinn",
+  to: "Berlin",
+  start: "date, probably first day will be asked",
+  end: "date, probably last day will be asked",
+  tickets: [
+    {
+      id: 1,
+      type: "flight",
+      from_airport: "TLL",
+      to_airport: "TXL",
+      from_city: "Tallinn",
+      to_city: "Berlin",
+      start_time: "...",
+      end_time: "...",
+      price: 35.50
+    }
+  ],
+  food: [
+    {
+      id: 1,
+      name: "coffee",
+      place: "Berlin Schönefeld Airport",
+      price: 4.99
+    }
+  ],
+  journey_panes: [
+    {
+      id: 1,
+      type: "wakeup",
+      time: "timestamp here",
+      extra: ""
+    },
+    {
+      id: 2,
+      type: "flight",
+      ticket_id: 1 // at this point find the ticket and show info from there?
+    }
+  ]
+}
+````
