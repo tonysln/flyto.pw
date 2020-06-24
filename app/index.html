@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tallinn ✈ Berlin | FlyTo</title>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+    />
+    <style>
+      @import url("https://rsms.me/inter/inter.css");
+
+      * {
+        font-family: "Inter", sans-serif;
+      }
+
+      @supports (font-variation-settings: normal) {
+        * {
+          font-family: "Inter var", sans-serif;
+        }
+      }
+      .underlined_pointer {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      html {
+        height: 100vh;
+        overflow-y: hidden;
+      }
+      
+      body {
+        height: 100vh;
+        overflow-y: auto;
+        padding-top: 100px;
+      }
+
+      #tab_journey {
+        height: 100%;
+      }
+      
+      #tab_journey .container {
+        height: 100%;
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar is-fixed-top">
+      <div class="has-background-link-dark has-text-light has-text-centered py-2">
+        <h2 class="is-size-5">
+          <span id="from_loc" class="underlined_pointer">Tallinn</span>
+          ✈
+          <span id="to_loc" class="underlined_pointer">Berlin</span>
+        </h2>
+      </div>
+      <div class="tabs is-centered">
+        <ul>
+          <li class="is-active">
+            <a>
+              <span>📔 Journey</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span>✈ Tickets</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span>🍴 Food</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span>🎫 Other</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="tab_journey">
+      <div class="container">
+        <article class="notification is-info mx-4" style="opacity: 0.3;">
+          <p class="title">
+            ⏰ 7:55 AM
+          </p>
+          <p class="subtitle">
+            Wake up
+          </p>
+        </article>
+
+        <article class="notification is-warning mx-4">
+          <p class="title">
+            🚕 8:45 AM
+          </p>
+          <p class="subtitle">
+            Taxi from
+            <span class="underlined_pointer">Home</span> to
+            <span class="underlined_pointer">Tartu Bussijaam</span>
+            using Bolt for
+            <span class="underlined_pointer">about 6€</span>
+          </p>
+          <p><em>🚩 Currently on Riia street</em></p>
+        </article>
+
+        <article class="notification is-info mx-4">
+          <p class="title">
+            🚌 9:00 AM
+          </p>
+          <p class="subtitle">
+            Bus from
+            <span class="underlined_pointer">Tartu Bussijaam</span> to
+            <span class="underlined_pointer">Tallinna Lennujaam</span> using Lux
+            Express for <span class="underlined_pointer">8.50€</span> from
+            <span class="underlined_pointer">platform 2</span>
+            <p><em>View in Tickets</em></p>
+          </p>
+        </article>
+
+        <article class="notification is-info mx-4">
+          <p class="title strik">
+            🛫 10:55 AM
+          </p>
+          <p class="subtitle">
+            Flight
+            <span class="underlined_pointer">BT 201</span> from <span class="underlined_pointer">TLL</span> to
+            <span class="underlined_pointer">TXL</span> by
+            <span class="underlined_pointer">Air Baltic</span> for
+            <span class="underlined_pointer">39.50€</span>
+            from gate
+            <span class="underlined_pointer">35D</span>
+            <p><em>View in Tickets</em></p>
+          </p>
+        </article>
+
+        <article class="notification is-info mx-4">
+          <p class="title">
+            🛬 11:55 AM
+          </p>
+          <p class="subtitle">
+            Arrival in Berlin - <span class="underlined_pointer">timezone change</span>
+          </p>
+        </article>
+      </div>
+    </section>
+  </body>
+</html>
