@@ -24,3 +24,18 @@ var app = new Vue({
     to: journey.to,
   },
 });
+
+function changeTab(tab) {
+  for (const tab of Array.from(document.getElementById("tabs").children)) {
+    tab.style.display = "none";
+  }
+  document.getElementById(tab.getAttribute("data-target")).style.display =
+    "block";
+
+  for (const tab_link of Array.from(
+    document.getElementById("tabs_list").children
+  )) {
+    tab_link.classList = "";
+  }
+  tab.classList.add("is-active");
+}
