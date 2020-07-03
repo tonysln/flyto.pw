@@ -27,35 +27,34 @@
             <p class="lead"></p>
           </div>
         </div>
-        <div
-          class="row pt-4 row-cols-md-auto g-3 align-items-center justify-content-center"
-        >
-          <div class="col text-right">
-            <span class="display-3">Tartu</span>
-          </div>
-          <div class="col text-center">
+        <div class="row pt-4">
+          <div class="text-center">
+            <span class="display-3" id="fromLabel"></span>
             <span class="display-2">🛫</span>
-          </div>
-          <div class="col text-left">
-            <span class="display-3">Berlin</span>
+            <span class="display-3" id="toLabel"></span>
           </div>
         </div>
-        <div class="row pt-4 text-center">
-          <div class="col-sm-5"></div>
-          <div class="col-sm-2">
-            <h4 class="bg-white shadow-sm p-2 rounded">
-              25/07/2020
-            </h4>
+        <div class="row pt-4 text-center justify-content-center">
+          <div class="text-center w-auto">
+            <h4
+              class="bg-white shadow-sm p-2 rounded w-auto"
+              id="dateLabel"
+            ></h4>
           </div>
-          <div class="col-sm-5"></div>
         </div>
         <div class="row pt-3">
           <div class="col text-center">
-            <a href="" class="text-muted">Update</a>
+            <a
+              class="text-muted"
+              data-toggle="modal"
+              data-target="#optionsMenu"
+              style="cursor: pointer;"
+              >Update</a
+            >
           </div>
         </div>
         <div class="row mt-5">
-          <div class="col-md-4 col-sm-1">
+          <div class="col-md-4 col-12 mb-4">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">⏰ Wake Up</h5>
@@ -65,7 +64,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-1">
+          <div class="col-md-4 col-12 mb-4">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">🚕 Taxi</h5>
@@ -77,7 +76,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-1">
+          <div class="col-md-4 col-12 mb-4">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">🚌 Bus</h5>
@@ -92,8 +91,8 @@
             </div>
           </div>
         </div>
-        <div class="row mt-3">
-          <div class="col-md-4 col-sm-1">
+        <div class="row">
+          <div class="col-md-4 col-12 mb-4">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">🔒 Security</h5>
@@ -107,7 +106,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-1">
+          <div class="col-md-4 col-12 mb-4">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">🛫 Flight</h5>
@@ -121,7 +120,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-1">
+          <div class="col-md-4 col-12 mb-4">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">🛬 Arrival</h5>
@@ -134,8 +133,8 @@
             </div>
           </div>
         </div>
-        <div class="row mt-3">
-          <div class="col-md-4 col-sm-1">
+        <div class="row">
+          <div class="col-md-4 col-12 mb-4">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">☕ Coffee</h5>
@@ -147,7 +146,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-1">
+          <div class="col-md-4 col-12 mb-4">
             <div class="card">
               <div
                 class="card-body text-center lead pt-5"
@@ -157,7 +156,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-1"></div>
+          <div class="col-md-4 col-12 mb-4"></div>
         </div>
         <div class="row pt-5">
           <div class="col text-center">
@@ -169,9 +168,84 @@
 
     <footer class="bg-dark text-light text-center p-3">
       <div class="container">
-        <span class="small">Created with ❤ by Anton</span>
+        <span class="small">FlyTo created with ❤ by Anton</span>
       </div>
     </footer>
+
+    <div
+      class="modal"
+      id="optionsMenu"
+      tabindex="-1"
+      aria-labelledby="optionsMenu"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+              Update Trip Details
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="fromInput" class="form-label">From</label>
+              <input
+                type="text"
+                class="form-control"
+                id="fromInput"
+                placeholder=""
+                value=""
+              />
+            </div>
+            <div class="mb-3">
+              <label for="toInput" class="form-label">To</label>
+              <input
+                type="text"
+                class="form-control"
+                id="toInput"
+                placeholder=""
+                value=""
+              />
+            </div>
+            <div class="mb-3">
+              <label for="dateInput" class="form-label">Date</label>
+              <input
+                type="text"
+                class="form-control"
+                id="dateInput"
+                placeholder=""
+                value=""
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-danger btn-sm"
+              id="clearTrip"
+            >
+              Clear
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary btn-sm"
+              id="updateOptions"
+              data-dismiss="modal"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -183,5 +257,6 @@
       integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
       crossorigin="anonymous"
     ></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
