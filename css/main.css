@@ -1,38 +1,18 @@
 @import url("https://rsms.me/inter/inter.css");
 
-html {
+html,
+body,
+header,
+main,
+footer,
+article {
   font-family: "Inter", sans-serif;
 }
 
-@supports (font-variation-settings: normal) {
-  html {
-    font-family: "Inter var", sans-serif;
-  }
+body {
+  background: #eff5fc;
 }
 
-a,
-a:hover,
-a:visited {
-  color: inherit;
-}
-
-header,
-main,
-footer {
-  max-width: 980px;
-  margin: 0 auto;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-main p,
-main ul li {
-  font-size: 1.2em;
-}
-
-header h1 {
-  font-size: 4em;
-  margin: 0;
-  margin-bottom: 0.3em;
-  margin-top: 0.6em;
+.card {
+  min-height: 175px;
 }
