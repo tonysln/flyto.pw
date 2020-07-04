@@ -16,7 +16,9 @@
     <header class="bg-white shadow-sm pt-3 pb-1">
       <div class="container text-center">
         <h3>
-          FlyTo
+          <a href="../" class="text-dark" style="text-decoration: none;"
+            >FlyTo</a
+          >
         </h3>
       </div>
     </header>
@@ -30,7 +32,7 @@
         <div class="row pt-4">
           <div class="text-center">
             <span class="display-3" id="fromLabel"></span>
-            <span class="display-2">🛫</span>
+            <span class="display-3 px-2">🛫</span>
             <span class="display-3" id="toLabel"></span>
           </div>
         </div>
@@ -51,16 +53,16 @@
               style="cursor: pointer;"
               >Update</a
             >
+            <a href="/newstep" class="text-muted pl-4">New Step</a>
           </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-5" id="stepsContainer">
           <div class="col-md-4 col-12 mb-4">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">⏰ Wake Up</h5>
                 <h6 class="card-subtitle mb-2 text-muted">07:15 AM</h6>
-                <p class="card-text"></p>
-                <a href="#" class="card-link">View Checklist</a>
+                <p class="card-text">Wake up at <strong>Home</strong>.</p>
               </div>
             </div>
           </div>
@@ -85,13 +87,10 @@
                   From <strong>Tartu Bussijaam</strong> to
                   <strong>Tallinna Lennujaam</strong>.
                 </p>
-                <a href="#" class="card-link">View QR Code</a>
                 <a href="#" class="card-link">Open Ticket</a>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
           <div class="col-md-4 col-12 mb-4">
             <div class="card">
               <div class="card-body">
@@ -101,7 +100,6 @@
                   Go through the security at
                   <strong>Tallinna Lennujaam</strong>.
                 </p>
-                <a href="#" class="card-link">View QR Code</a>
                 <a href="#" class="card-link">Open Ticket</a>
               </div>
             </div>
@@ -115,7 +113,6 @@
                   From <strong>Tallinna Lennujaam</strong> to
                   <strong>Berlin Schönefeld Airport</strong>.
                 </p>
-                <a href="#" class="card-link">View QR Code</a>
                 <a href="#" class="card-link">Open Ticket</a>
               </div>
             </div>
@@ -132,8 +129,6 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
           <div class="col-md-4 col-12 mb-4">
             <div class="card">
               <div class="card-body">
@@ -146,17 +141,6 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-12 mb-4">
-            <div class="card">
-              <div
-                class="card-body text-center lead pt-5"
-                style="cursor: pointer;"
-              >
-                <p>Add New Step</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-12 mb-4"></div>
         </div>
         <div class="row pt-5">
           <div class="col text-center">
@@ -258,5 +242,81 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/main.js"></script>
+    <script>
+      // If variables are empty (new session) - automatically display the update info dialog.
+      if (!fromValue && !toValue && !dateValue) {
+        new bootstrap.Modal(document.querySelector("#optionsMenu")).show();
+      }
+
+      // Display trip info (if there is any or not).
+      displayTripOptions();
+      displaySteps();
+
+      document
+        .querySelector("#updateOptions")
+        .addEventListener("click", (e) => {
+          fromValue = document.querySelector("#fromInput").value;
+          toValue = document.querySelector("#toInput").value;
+          dateValue = document.querySelector("#dateInput").value;
+          if (fromValue && toValue && dateValue) {
+            saveToLocalStorage("fromValue", fromValue);
+            saveToLocalStorage("toValue", toValue);
+            saveToLocalStorage("dateValue", dateValue);
+            displayTripOptions();
+          }
+        });
+
+      document.querySelector("#clearTrip").addEventListener("click", (e) => {
+        localStorage.clear();
+        window.location.replace("/");
+      });
+
+      function displayTripOptions() {
+        // Display trip info on the page.
+        document.querySelector("#fromInput").value = fromValue;
+        document.querySelector("#toInput").value = toValue;
+        document.querySelector("#dateInput").value = dateValue;
+        document.querySelector("#fromLabel").textContent = fromValue;
+        document.querySelector("#toLabel").textContent = toValue;
+        document.querySelector("#dateLabel").textContent = dateValue;
+      }
+
+      function displaySteps() {
+        // Display trip steps on the page.
+        for (const step of steps) {
+          const cardCol = document.createElement("div");
+          cardCol.classList = "col-md-4 col-12 mb-4";
+          const stepCard = document.createElement("div");
+          stepCard.classList = "card";
+          const stepCardBody = document.createElement("div");
+          stepCardBody.classList = "card-body";
+          const stepCardBodyTitle = document.createElement("h5");
+          stepCardBodyTitle.classList = "card-title";
+          stepCardBodyTitle.textContent = step.type;
+          const stepCardBodySubtitle = document.createElement("h6");
+          stepCardBodySubtitle.classList = "card-subtitle mb-2 text-muted";
+          stepCardBodySubtitle.textContent = step.time;
+          const stepCardBodyText = document.createElement("p");
+          stepCardBodyText.classList = "card-text";
+          stepCardBodyText.textContent = step.description;
+          stepCardBody.append(
+            stepCardBodyTitle,
+            stepCardBodySubtitle,
+            stepCardBodyText
+          );
+          // Add ticket link if ticket is present.
+          if (step.ticket) {
+            const ticketLink = document.createElement("a");
+            ticketLink.classList = "card-link";
+            ticketLink.href = "#";
+            ticketLink.textContent = "Open Ticket";
+            stepCardBody.appendChild(ticketLink);
+          }
+          stepCard.appendChild(stepCardBody);
+          cardCol.appendChild(stepCard);
+          document.querySelector("#stepsContainer").appendChild(cardCol);
+        }
+      }
+    </script>
   </body>
 </html>

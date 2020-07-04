@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Step | FlyTo</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+  </head>
+  <body>
+    <header class="bg-white shadow-sm pt-3 pb-1">
+      <div class="container text-center">
+        <h3>
+          <a href="../" class="text-dark" style="text-decoration: none;"
+            >FlyTo</a
+          >
+        </h3>
+      </div>
+    </header>
+    <main>
+      <div class="container mb-5" style="max-width: 780px;">
+        <div class="row pt-5">
+          <div class="col text-center">
+            <p class="lead">Create New Step</p>
+          </div>
+        </div>
+        <div class="row pt-4">
+          <div class="col">
+            <label for="stepType" class="form-label">Step Type</label>
+            <select
+              class="form-select form-select-lg mb-3"
+              aria-label="Select step type"
+              id="stepType"
+            >
+              <option value="⏰ Wake Up">⏰ Wake Up</option>
+              <option value="🚕 Taxi">🚕 Taxi</option>
+              <option value="🚌 Bus">🚌 Bus</option>
+              <option value="🔒 Security">🔒 Security</option>
+              <option value="🛫 Flight">🛫 Flight</option>
+              <option value="🛬 Arrival">🛬 Arrival</option>
+              <option value="☕ Coffee">☕ Coffee</option>
+            </select>
+          </div>
+        </div>
+        <div class="row pt-2">
+          <div class="col">
+            <label for="stepTime" class="form-label">Time</label>
+            <input
+              type="text"
+              class="form-control"
+              id="stepTime"
+              placeholder=""
+              value=""
+            />
+          </div>
+        </div>
+        <div class="row pt-2">
+          <div class="col">
+            <label for="stepDescription" class="form-label">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="stepDescription"
+              placeholder=""
+              value=""
+            />
+          </div>
+        </div>
+        <div class="row pt-4">
+          <div class="col">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="stepTicket"
+              />
+              <label class="form-check-label" for="stepTicket">
+                Ticket
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-4">
+          <div class="col">
+            <button type="button" class="btn btn-secondary" id="addNewStep">
+              Add Step
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-dark text-light text-center p-3 fixed-bottom">
+      <div class="container">
+        <span class="small">FlyTo created with ❤ by Anton</span>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/main.js"></script>
+    <script>
+      document.querySelector("#addNewStep").addEventListener("click", (e) => {
+        // Get the inserted values
+        const stepType = document.querySelector("#stepType").value;
+        const stepTime = document.querySelector("#stepTime").value;
+        const stepDescription = document.querySelector("#stepDescription")
+          .value;
+        const stepTicket = document.querySelector("#stepTicket").checked;
+
+        // If they are not empty, push them to the local steps list and then save it to local storage.
+        if (stepType && stepTime && stepDescription) {
+          steps.push({
+            type: stepType,
+            time: stepTime,
+            description: stepDescription,
+            ticket: stepTicket,
+          });
+          saveJSONToLocalStorage("steps", steps);
+          // Redirect back to the home page.
+          window.location.replace("../");
+        }
+      });
+    </script>
+  </body>
+</html>
