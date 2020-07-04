@@ -10,13 +10,9 @@ Plan your trips and keep track of your plan easily.
 - Quickly access the trip from any device by sharing it (_how exactly?_).
 - No registration needed, but only one trip at a time can be created.
 
-## Splash page
+## Journey creation dialog
 
-Main page with info and big cool words. Will detect any saved journies and offer to view them immediately or create a new one.
-
-## Journey creation page
-
-If no journies are detected in local storage, will offer to create a new one (will need a name, destination, dates etc before adding more stuff) or load one (will save the loaded JSON into localstorage and forward to the journey page).
+If no journies are detected in local storage, will offer to create a new one (will need a destination, dates etc before adding more stuff) or load one (will save the loaded JSON into localstorage and forward to the journey page).
 
 ## Journey page
 
@@ -71,48 +67,4 @@ Frontend - Vue.js possibly? First version - pure JS and Bootstrap. Fonts - Inter
 
 Localstorage for saving. JS/Vue for pretty much everything.
 
-All data stored in a JSON object, maybe something like this:
-
-```js
-const journey = {
-  created: "datestamp here",
-  from: "Tallinn",
-  to: "Berlin",
-  start: "date, probably first day will be asked",
-  end: "date, probably last day will be asked",
-  tickets: [
-    {
-      id: 1,
-      type: "flight",
-      from_airport: "TLL",
-      to_airport: "TXL",
-      from_city: "Tallinn",
-      to_city: "Berlin",
-      start_time: "...",
-      end_time: "...",
-      price: 35.5,
-    },
-  ],
-  food: [
-    {
-      id: 1,
-      name: "coffee",
-      place: "Berlin Schönefeld Airport",
-      price: 4.99,
-    },
-  ],
-  journey_panes: [
-    {
-      id: 1,
-      type: "wakeup",
-      time: "timestamp here",
-      extra: "",
-    },
-    {
-      id: 2,
-      type: "flight",
-      ticket_id: 1, // at this point find the ticket and show info from there?
-    },
-  ],
-};
-```
+All data stored in localStorage, for example string variables for city names, dates, time. A JSON list with "steps" - objects that represent each step of the journey with the type, time, description, attached tickets etc.
